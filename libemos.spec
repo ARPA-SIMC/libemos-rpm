@@ -64,6 +64,7 @@ popd
 rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
+popd
 
 
 %files
