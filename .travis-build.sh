@@ -36,7 +36,6 @@ then
     pkgname="$(rpmspec -q --qf="libemos-%{version}-%{release}\n" libemos.spec | head -n1)"
     mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
     cp libemos.spec ~/rpmbuild/SPECS/
-    cp *.patch ~/rpmbuild/SOURCES/
     spectool -g -R ~/rpmbuild/SPECS/libemos.spec
     rpmbuild -ba ~/rpmbuild/SPECS/libemos.spec 2>&1 | pv -q -L 3k
     find ~/rpmbuild/{RPMS,SRPMS}/ -name "${pkgname}*rpm" -exec cp -v {} . \;
