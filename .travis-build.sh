@@ -14,6 +14,7 @@ then
     yum install -y git
     yum install -y rpmdevtools
     yum install -y pv
+    yum copr enable -y pat1/simc
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -24,6 +25,7 @@ then
     dnf install -y git
     dnf install -y rpmdevtools
     dnf install -y pv
+    dnf copr enable -y pat1/simc
 fi
 
 $builddep -y libemos.spec
