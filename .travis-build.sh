@@ -13,6 +13,7 @@ then
     yum install -y yum-utils
     yum install -y git
     yum install -y rpmdevtools
+    yum install -y yum-plugin-copr
     yum install -y pv
     yum copr enable -y pat1/simc
 elif [[ $image =~ ^fedora: ]]
