@@ -55,6 +55,11 @@ pushd build
 
 popd
 
+%check
+pushd build
+make test
+popd
+
 %install
 rm -rf $RPM_BUILD_ROOT
 pushd build
