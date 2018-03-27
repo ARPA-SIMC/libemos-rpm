@@ -1,12 +1,11 @@
 Name:           libemos
-Version:        4.5.1
+Version:        4.5.4
 Release:        1%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
 URL:            https://software.ecmwf.int/wiki/display/EMOS/
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473472/%{name}-%{version}-Source.tar.gz
-
 BuildRequires:  cmake
 BuildRequires:  eccodes-devel
 BuildRequires:  gcc-gfortran
@@ -82,5 +81,8 @@ popd
 
 
 %changelog
+* Tue Mar 27 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.4-1
+- Upstream update
+
 * Wed Feb  7 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.5.1-1
 - First package
