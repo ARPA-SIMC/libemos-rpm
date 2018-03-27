@@ -13,6 +13,9 @@ BuildRequires:  gcc-gfortran
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
+# Apparently only required for CentOs
+BuildRequires:  jasper-devel
+BuildRequires:  openjpeg2-devel
 
 %description
 The Interpolation library (EMOSLIB) includes Interpolation software
@@ -53,9 +56,7 @@ pushd build
     -DCMAKE_BUILD_TYPE=Release \
     -DINSTALL_INCLUDE_DIR=%{_includedir} \
     -DENABLE_SINGLE_PRECISION=ON \
-    -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_GRIBEX_ABORT=OFF
-
+    -DBUILD_SHARED_LIBS=ON
 
 %make_build
 
