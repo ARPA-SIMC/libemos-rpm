@@ -8,8 +8,11 @@ URL:            https://software.ecmwf.int/wiki/display/EMOS/
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473472/%{name}-%{version}-Source.tar.gz
 BuildRequires:  cmake
 BuildRequires:  eccodes-devel
+BuildRequires:  eccodes-doc
 BuildRequires:  gcc-gfortran
 BuildRequires:  fftw-devel
+BuildRequires:  boost-devel
+BuildRequires:  git
 
 %description
 The Interpolation library (EMOSLIB) includes Interpolation software
@@ -47,7 +50,11 @@ pushd build
 %cmake .. \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DINSTALL_LIB_DIR=%{_lib} \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DINSTALL_INCLUDE_DIR=%{_includedir} \
+    -DENABLE_SINGLE_PRECISION=ON \
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_GRIBEX_ABORT=OFF
 
 
 %make_build
@@ -56,7 +63,7 @@ popd
 
 %check
 pushd build
-make test
+CTEST_OUTPUT_ON_FAILURE=1 make test
 popd
 
 %install
