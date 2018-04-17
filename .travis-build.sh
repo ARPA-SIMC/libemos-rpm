@@ -15,7 +15,7 @@ then
     yum install -y rpmdevtools
     yum install -y yum-plugin-copr
     yum install -y pv
-    yum copr enable -y edigiacomo/test
+    yum copr enable -y simc/stable
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
@@ -26,7 +26,7 @@ then
     dnf install -y git
     dnf install -y rpmdevtools
     dnf install -y pv
-    dnf copr enable -y edigiacomo/test
+    dnf copr enable -y simc/stable
 fi
 
 $builddep -y libemos.spec
