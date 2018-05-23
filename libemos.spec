@@ -51,7 +51,7 @@ mkdir build
 pushd build
 
 %cmake .. \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-unused-variable -Wno-unused-but-set-variable" \
+    -DCMAKE_FC_FLAGS="$FCFLAGS -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-label -Wno-integer-division" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DINSTALL_LIB_DIR=%{_lib} \
     -DCMAKE_BUILD_TYPE=Release \
