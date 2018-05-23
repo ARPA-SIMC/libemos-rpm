@@ -1,5 +1,5 @@
 Name:           libemos
-Version:        4.5.4
+Version:        4.5.5
 Release:        1%{?dist}
 Summary:        ECMWF Interpolation Library
 
@@ -51,12 +51,15 @@ mkdir build
 pushd build
 
 %cmake .. \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-unused-variable -Wno-unused-but-set-variable" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DINSTALL_LIB_DIR=%{_lib} \
     -DCMAKE_BUILD_TYPE=Release \
     -DINSTALL_INCLUDE_DIR=%{_includedir} \
+    -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DENABLE_SINGLE_PRECISION=ON \
-    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_GRIBEX_ABORT=OFF
 
 %make_build
 
@@ -89,6 +92,11 @@ popd
 
 
 %changelog
+* Wed May 23 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.5-1
+- Upstream update
+- Reducing build logs (#1)
+- Enabling GRIBEX call since some internal sw (verifica) depends on it
+
 * Tue Mar 27 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.4-1
 - Upstream update
 
