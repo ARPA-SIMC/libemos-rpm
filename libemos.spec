@@ -16,6 +16,7 @@ BuildRequires:  git
 # Apparently only required for CentOs
 BuildRequires:  jasper-devel
 BuildRequires:  openjpeg2-devel
+BuildRequires:  libpng-devel
 
 %description
 The Interpolation library (EMOSLIB) includes Interpolation software
@@ -59,7 +60,7 @@ pushd build
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DENABLE_SINGLE_PRECISION=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_GRIBEX_ABORT=OFF
+    -DENABLE_GRIBEX_ABORT=ON
 
 %make_build
 
