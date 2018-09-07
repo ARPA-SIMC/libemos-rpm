@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -92,6 +92,9 @@ popd
 
 
 %changelog
+* Fri Sep  7 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.5-2
+- Bogus release to get rid of libeccodes_memfs.so dependency
+
 * Wed May 23 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.5-1
 - Upstream update
 - Reducing build logs (#1)
