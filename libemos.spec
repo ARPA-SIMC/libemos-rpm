@@ -10,6 +10,7 @@ BuildRequires:  cmake
 BuildRequires:  eccodes-devel
 BuildRequires:  eccodes-doc
 BuildRequires:  gcc-gfortran
+BuildRequires:  gcc-c++
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
