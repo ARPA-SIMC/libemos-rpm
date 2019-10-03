@@ -10,7 +10,6 @@ BuildRequires:  cmake
 BuildRequires:  eccodes-devel
 BuildRequires:  eccodes-doc
 BuildRequires:  gcc-gfortran
-BuildRequires:  gcc-c++
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
@@ -52,16 +51,25 @@ This software covers :
 mkdir build
 pushd build
 
-%cmake .. \
-    -DCMAKE_Fortran_FLAGS="$FCFLAGS -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-label -Wno-integer-division" \
-    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DINSTALL_LIB_DIR=%{_lib} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DINSTALL_INCLUDE_DIR=%{_includedir} \
-    -DCMAKE_INSTALL_MESSAGE=NEVER \
-    -DENABLE_SINGLE_PRECISION=ON \
-    -DBUILD_SHARED_LIBS=ON \
-    -DENABLE_GRIBEX_ABORT=OFF
+
+# TODO:
+# somethere beteween eccodes 2.12.5 and 2.13.0 libemos stopped to detect
+# eccodes variables (include dir and libraries).
+# Forcing assignment is a (not ideal) workaround.
+
+%cmake3 .. \
+	-DCMAKE_C_FLAGS="%{optflags} -w" \
+	-DCMAKE_Fortran_FLAGS="%{optflags} -w" \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DINSTALL_LIB_DIR=%{_lib} \
+	-DECCODES_INCLUDE_DIR=%{_includedir} \
+	-DECCODES_LIBRARIES="eccodes" \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_MESSAGE=NEVER \
+	-DENABLE_SINGLE_PRECISION=ON \
+	-DBUILD_SHARED_LIBS=ON \
+	-DENABLE_GRIBEX_ABORT=ON
+
 
 %make_build
 
@@ -69,7 +77,7 @@ popd
 
 %check
 pushd build
-CTEST_OUTPUT_ON_FAILURE=1 make test
+CTEST_OUTPUT_ON_FAILURE=1 ctest3 %{?_smp_mflags}
 popd
 
 %install
@@ -94,10 +102,6 @@ popd
 
 
 %changelog
-* Tue Oct  1 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-1
-- Upstream update
-- Enabled GRIBEX calls
-
 * Mon Oct 15 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.7-1
 - Upstream update
 
