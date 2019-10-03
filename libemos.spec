@@ -6,7 +6,8 @@ Summary:        ECMWF Interpolation Library
 License:        Apache 2.0
 URL:            https://software.ecmwf.int/wiki/display/EMOS/
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473472/%{name}-%{version}-Source.tar.gz
-BuildRequires:  cmake
+
+BuildRequires:  cmake3
 BuildRequires:  eccodes-devel
 BuildRequires:  eccodes-doc
 BuildRequires:  gcc
