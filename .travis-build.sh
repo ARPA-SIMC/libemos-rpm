@@ -3,7 +3,7 @@ set -exo pipefail
 
 image=$1
 
-if [[ $image =~ ^centos: ]]
+if [[ $image =~ ^centos:7 ]]
 then
     pkgcmd="yum"
     builddep="yum-builddep"
