@@ -9,6 +9,8 @@ Source0:        https://software.ecmwf.int/wiki/download/attachments/3473472/%{n
 BuildRequires:  cmake
 BuildRequires:  eccodes-devel
 BuildRequires:  eccodes-doc
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-gfortran
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
