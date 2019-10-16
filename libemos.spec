@@ -79,9 +79,15 @@ pushd build
 popd
 
 %check
+
+%if 0%{?rhel} == 7
+%define python3_vers python36
+# test disabled
+%else
 pushd build
 CTEST_OUTPUT_ON_FAILURE=1 ctest3 %{?_smp_mflags}
 popd
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
