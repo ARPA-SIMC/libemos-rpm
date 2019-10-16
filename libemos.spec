@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -71,7 +71,7 @@ pushd build
 	-DCMAKE_INSTALL_MESSAGE=NEVER \
 	-DENABLE_SINGLE_PRECISION=ON \
 	-DBUILD_SHARED_LIBS=ON \
-	-DENABLE_GRIBEX_ABORT=ON
+	-DENABLE_GRIBEX_ABORT=OFF
 
 
 %make_build
@@ -105,6 +105,12 @@ popd
 
 
 %changelog
+* Wed Oct 16 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-2
+- Re-enabling GRIBEX call
+
+* Thu Oct  3 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-1
+- Upstream update
+
 * Mon Oct 15 2018 Daniele Branchini <dbranchini@arpae.it> - 4.5.7-1
 - Upstream update
 
