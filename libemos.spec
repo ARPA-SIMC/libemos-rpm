@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -80,7 +80,7 @@ popd
 
 %check
 
-%if 0%{?rhel} == 7
+%if 0%{?rhel} >= 7
 %define python3_vers python36
 # test disabled
 %else
@@ -99,7 +99,7 @@ popd
 %files
 %license LICENSE
 %defattr(-,root,root)
-%{_bindir}/*
+%exclude %{_bindir}/*
 %{_libdir}/libemos.a
 %{_libdir}/libemosR64.a
 %{_libdir}/pkgconfig/libemos.pc
@@ -111,6 +111,9 @@ popd
 
 
 %changelog
+* Tue Nov 12 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-3
+- Removing bin from package to avoid conflict with 
+
 * Wed Oct 16 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-2
 - Re-enabling GRIBEX call
 
