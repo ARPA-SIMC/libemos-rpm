@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.9
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -99,7 +99,17 @@ popd
 %files
 %license LICENSE
 %defattr(-,root,root)
-%exclude %{_bindir}/*
+%{_bindir}/*
+# these are also in eccodes package...
+%exclude %{_bindir}/bufr_compare
+%exclude %{_bindir}/bufr_compare_dir
+%exclude %{_bindir}/bufr_copy
+%exclude %{_bindir}/bufr_count
+%exclude %{_bindir}/bufr_dump
+%exclude %{_bindir}/bufr_filter
+%exclude %{_bindir}/bufr_get
+%exclude %{_bindir}/bufr_ls
+%exclude %{_bindir}/bufr_set
 %{_libdir}/libemos.a
 %{_libdir}/libemosR64.a
 %{_libdir}/pkgconfig/libemos.pc
@@ -111,8 +121,11 @@ popd
 
 
 %changelog
+* Thu Dec 19 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-4
+- Restored some binaries for Metview compilation
+
 * Tue Nov 12 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-3
-- Removing bin from package to avoid conflict with 
+- Removing bin from package to avoid conflict with eccodes
 
 * Wed Oct 16 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-2
 - Re-enabling GRIBEX call
