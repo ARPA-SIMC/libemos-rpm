@@ -8,6 +8,7 @@ then
     pkgcmd="yum"
     builddep="yum-builddep"
     sed -i '/^tsflags=/d' /etc/yum.conf
+    yum update -y
     yum install -q -y epel-release
     yum install -q -y @buildsys-build
     yum install -q -y yum-utils
@@ -21,6 +22,7 @@ then
     pkgcmd="dnf"
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
+    dnf update -y
     dnf install -q -y epel-release
     dnf install -q -y 'dnf-command(config-manager)'
     dnf config-manager --set-enabled PowerTools
@@ -35,6 +37,7 @@ then
     pkgcmd="dnf"
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
+    dnf update -y
     dnf install --allowerasing -q -y @buildsys-build
     dnf install -q -y 'dnf-command(builddep)'
     dnf install -q -y git
