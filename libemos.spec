@@ -59,9 +59,7 @@ pushd build
 
 %if 0%{?fedora} >= 32
 # https://gcc.gnu.org/gcc-10/changes.html (see Fortran section)
-%define f_add_flags "-fallow-argument-mismatch -w"
-%else
-%define f_add_flags "-w"
+%define f_mismatch 1
 %endif
 
 # TODO:
@@ -71,7 +69,7 @@ pushd build
 
 %cmake3 .. \
 	-DCMAKE_C_FLAGS="%{optflags} -w" \
-	-DCMAKE_Fortran_FLAGS="%{optflags} %{f_add_flags}" \
+	-DCMAKE_Fortran_FLAGS="%{optflags} %{?f_mismatch:-fallow-argument-mismatch} -w" \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DINSTALL_LIB_DIR=%{_lib} \
 	-DECCODES_INCLUDE_DIR=%{_includedir} \
