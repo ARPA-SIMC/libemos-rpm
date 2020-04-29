@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.9
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -54,6 +54,15 @@ This software covers :
 mkdir build
 pushd build
 
+# TODO:
+# Patch all arguments mismatch?
+
+%if 0%{?fedora} >= 32
+# https://gcc.gnu.org/gcc-10/changes.html (see Fortran section)
+%define f_add_flags "-fallow-argument-mismatch -w"
+%else
+%define f_add_flags "-w"
+%endif
 
 # TODO:
 # somethere beteween eccodes 2.12.5 and 2.13.0 libemos stopped to detect
@@ -62,7 +71,7 @@ pushd build
 
 %cmake3 .. \
 	-DCMAKE_C_FLAGS="%{optflags} -w" \
-	-DCMAKE_Fortran_FLAGS="%{optflags} -w" \
+	-DCMAKE_Fortran_FLAGS="%{optflags} %{f_add_flags}" \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DINSTALL_LIB_DIR=%{_lib} \
 	-DECCODES_INCLUDE_DIR=%{_includedir} \
@@ -121,6 +130,9 @@ popd
 
 
 %changelog
+* Wed Apr 29 2020 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-5
+- Allowing argument mismatch for gcc 10
+
 * Thu Dec 19 2019 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-4
 - Restored some binaries for Metview compilation
 
