@@ -69,7 +69,7 @@ pushd build
 
 %cmake3 .. \
 	-DCMAKE_C_FLAGS="%{optflags} -w" \
-	-DCMAKE_Fortran_FLAGS="%{optflags} %{?f_mismatch:-fallow-argument-mismatch} -w" \
+	-DCMAKE_Fortran_FLAGS="%{optflags} %{?f_mismatch:-fallow-argument-mismatch}" \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DINSTALL_LIB_DIR=%{_lib} \
 	-DECCODES_INCLUDE_DIR=%{_includedir} \
