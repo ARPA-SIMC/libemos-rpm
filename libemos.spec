@@ -1,6 +1,6 @@
 Name:           libemos
 Version:        4.5.9
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        ECMWF Interpolation Library
 
 License:        Apache 2.0
@@ -81,7 +81,12 @@ pushd build
 	-DENABLE_GRIBEX_ABORT=OFF
 
 
+%if 0%{?fedora} >= 32
+# https://fedoraproject.org/wiki/Changes/CMake_to_do_out-of-source_builds
+%cmake_build
+%else
 %make_build
+%endif
 
 popd
 
@@ -97,11 +102,20 @@ popd
 %endif
 
 %install
-rm -rf $RPM_BUILD_ROOT
+[ "%{buildroot}" != / ] && rm -rf %{buildroot}
 pushd build
+
+%if 0%{?fedora} >= 32
+# https://fedoraproject.org/wiki/Changes/CMake_to_do_out-of-source_builds
+%cmake_install
+%else
 %make_install
+%endif
+
 popd
 
+%clean
+[ "%{buildroot}" != / ] && rm -rf %{buildroot}
 
 %files
 %license LICENSE
@@ -128,6 +142,9 @@ popd
 
 
 %changelog
+* Wed May  5 2021 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-6
+- fixed builds for F33/F34
+
 * Wed Apr 29 2020 Daniele Branchini <dbranchini@arpae.it> - 4.5.9-5
 - Allowing argument mismatch for gcc 10
 
