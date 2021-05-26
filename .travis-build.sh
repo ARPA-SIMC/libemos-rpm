@@ -55,8 +55,6 @@ then
     cp libemos.spec ~/rpmbuild/SPECS/
     spectool -g -R ~/rpmbuild/SPECS/libemos.spec
     rpmbuild -ba ~/rpmbuild/SPECS/libemos.spec 2>&1 | pv -q -L 3k
-    find ~/rpmbuild/{RPMS,SRPMS}/ -name "${pkgname}*rpm" -exec cp -v {} . \;
-    # TODO upload ${pkgname}*.rpm to github release on deploy stage
 else
     echo "Unsupported image"
     exit 1
