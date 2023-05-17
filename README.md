@@ -1,6 +1,8 @@
 [![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/centos7.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
-[![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/centos8.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/rocky8.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/rocky9.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
 [![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/fedora36.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/libemos-rpm/fedora38.png)](https://simc.arpae.it/moncic-ci/libemos-rpm/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/libemos/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/libemos/)
 
 # rpm packaging files for Emoslib
